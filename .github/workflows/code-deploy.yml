@@ -12,14 +12,16 @@ jobs:
             - name: Checkout Code
               uses: actions/checkout@v4 # code ka access milega
 
-            - name: Deploy on Excloud
+            - name: Deploy on ExCloud
               uses: appleboy/ssh-action@v1.0.3
               with:
-                  host: 210.79.129.235 # your ip
+                  host: 210.79.128.168 # your ip
                   username: ubuntu
-                  key: ${{ secrets.PRIVATE_KEY }}
+                  key: ${{ secrets.PRIVATE_KEY }} # from github lelo
                   script: |
-                      cd /home/ubuntu/cicd-deployment
+                      export NVM_DIR="$HOME/.nvm"
+                      [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+                      cd /home/ubuntu/chai-node-server
                       git pull
-                      npm install  
+                      npm install
                       pm2 restart 0
