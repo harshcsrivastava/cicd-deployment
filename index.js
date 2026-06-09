@@ -5,7 +5,7 @@ const app = express()
 app.get("/", (req, res) => {
     return res.status(200).json({
         message: "Hello, World! Github Actions with traditional way",
-        status: "Github-Actions-Deployment Successful"
+        status: "Github-Actions-Deployment Successful => Added DockerFile and updated workflow file",
     })
 })
 
