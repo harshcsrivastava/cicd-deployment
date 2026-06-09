@@ -1,0 +1,18 @@
+services:
+  nodejs-server:
+    image: harshdotexe/chaicode-cicd
+    deploy:
+      replicas: 5
+    networks:
+      - cicd-internal # same network no need to expose
+  caddy:
+    image: caddy:latest
+    volumes: 
+      - ./Caddyfile:/etc/caddy/Caddyfile
+    networks:
+      - cicd-internal
+
+
+networks:
+  cicd-internal:
+    driver: bridge

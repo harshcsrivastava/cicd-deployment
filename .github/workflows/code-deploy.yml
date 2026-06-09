@@ -35,12 +35,8 @@ jobs:
                   username: ubuntu
                   key: ${{ secrets.PRIVATE_KEY }} # from github lelo
                   script: |
-                      sudo docker stop chaicode-cicd || true
-
-                      sudo docker rm chaicode-cicd || true
-
-                      sudo docker pull harshdotexe/chaicode-cicd
-
-                      sudo docker run -d --name chaicode-cicd -p 80:8000 harshdotexe/chaicode-cicd:latest
-
+                      cd /home/ubuntu/cicd-deployment
+                      git pull origin main
+                      sudo docker pull harshdotexe/chaicode-cicd:latest || true
+                      sudo docker compose up -d
                       sudo docker image prune -f
