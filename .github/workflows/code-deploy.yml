@@ -41,6 +41,6 @@ jobs:
 
                       sudo docker pull harshdotexe/chaicode-cicd
 
-                      sudo docker run -d --name chaicode-cicd -p 8000:8000 harshdotexe/chaicode-cicd:latest
+                      sudo docker run -d --name chaicode-cicd -p 80:8000 harshdotexe/chaicode-cicd:latest
 
                       sudo docker image prune -f
