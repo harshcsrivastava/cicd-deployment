@@ -14,7 +14,7 @@ jobs:
             - name: Login to Docker Hub
               uses: docker/login-action@v4
               with:
-                  username: ${{ vars.DOCKERHUB_USERNAME }} 
+                  username: ${{ vars.DOCKERHUB_USERNAME }}
                   password: ${{ secrets.DOCKERHUB_TOKEN }}
 
             - name: Set up Qemu
@@ -35,9 +35,12 @@ jobs:
                   username: ubuntu
                   key: ${{ secrets.PRIVATE_KEY }} # from github lelo
                   script: |
-                      export NVM_DIR="$HOME/.nvm"
-                      [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-                      cd /home/ubuntu/cicd-deployment
-                      git pull
-                      npm install
-                      pm2 restart 0
+                      sudo docker stop chaicode-cicd || true
+
+                      sudo docker rm chaicode-cicd || true
+
+                      sudo docker pull harshdotexe/chaicode-cicd
+
+                      sudo docker run -d --name chaicode-cicd -p 8000:8000 harshdotexe/chaicode-cicd:latest
+
+                      sudo docker image prune -f
