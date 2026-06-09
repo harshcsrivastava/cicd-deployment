@@ -15,7 +15,7 @@ jobs:
             - name: Deploy on ExCloud
               uses: appleboy/ssh-action@v1.0.3
               with:
-                  host: 210.79.129.245 # your ip
+                  host: ${{ secrets.HOST }} # your ip
                   username: ubuntu
                   key: ${{ secrets.PRIVATE_KEY }} # from github lelo
                   script: |
