@@ -37,6 +37,6 @@ jobs:
                   script: |
                       cd /home/ubuntu/cicd-deployment
                       git pull origin main
-                      sudo docker pull harshdotexe/chaicode-cicd:latest || true
+                      sudo docker compose pull
                       sudo docker compose up -d
                       sudo docker image prune -f
