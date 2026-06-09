@@ -4,8 +4,8 @@ const app = express()
 
 app.get("/", (req, res) => {
     return res.status(200).json({
-        message: "Hello, World! Github Actions with traditional way",
-        status: "Dockerized and Deployed using Github Actions",
+        message: "Still Alive, Still Breathing.",
+        status: "Dockerized and Deployed using Github Actions + SSL Certified with Caddy",
     })
 })
 
