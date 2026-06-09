@@ -21,3 +21,7 @@ services:
 networks:
   cicd-internal:
     driver: bridge
+
+volumes:
+  caddy_data:
+  caddy_config:
